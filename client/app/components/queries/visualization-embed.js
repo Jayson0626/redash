@@ -44,7 +44,7 @@ const VisualizationEmbed = {
 };
 
 export default function init(ngModule) {
-  ngModule.component('visualizationEmbed', VisualizationEmbed);
+  ngModule.component('visualizationEmbedOld', VisualizationEmbed);
 
   function loadSession($route, Auth) {
     const apiKey = $route.current.params.api_key;
@@ -59,12 +59,12 @@ export default function init(ngModule) {
   }
 
   ngModule.config(($routeProvider) => {
-    $routeProvider.when('/embed/query/:queryId/visualization/:visualizationId', {
+    $routeProvider.when('/embedold/query/:queryId/visualization/:visualizationId', {
       resolve: {
         query: loadQuery,
       },
       reloadOnSearch: false,
-      template: '<visualization-embed query="$resolve.query"></visualization-embed>',
+      template: '<visualization-embed-old query="$resolve.query"></visualization-embed-old>',
     });
   });
 }
